@@ -1,4 +1,4 @@
-import { fetchTypeData } from './api';
+import { fetchTypeData } from "./api";
 
 export async function getPokemonWeaknesses(types: string[]) {
   const weaknesses: Set<string> = new Set();

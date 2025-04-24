@@ -1,20 +1,18 @@
-
-
 .page {
-  --button-primary: #E50012;
+  --button-primary: #e50012;
   --button-text: #fff;
   --button-primary-hover: #383838;
   --button-secondary-hover: #f2f2f2;
   --text-color-primary: #282828;
   --text-input-color: #555;
-  --bg-primary: #FFE100;
+  --bg-primary: #ffe100;
 
   display: flex;
   flex-direction: column;
   min-height: 100svh;
-  font-family: 'Pixelify Sans Variable', system-ui;
+  font-family: "Pixelify Sans Variable", system-ui;
   border: 2px solid var(--text-color-primary);
-  margin: .6em;
+  margin: 0.6em;
   border-radius: 0.75rem;
 }
 
@@ -36,7 +34,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .input_label {
@@ -59,15 +57,15 @@
 .input {
   border-radius: 0.75rem;
   border: 2px solid var(--text-color-primary);
-  padding-top: .6em;
-  padding-bottom: .6em;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
   padding-left: 1.3em;
   padding-right: 1em;
   margin-right: 1em;
-  font-family: 'Pixelify Sans Variable', system-ui;
+  font-family: "Pixelify Sans Variable", system-ui;
   font-size: 1rem;
   color: var(--text-color-primary);
-  transition: all ease-in-out .3s;
+  transition: all ease-in-out 0.3s;
 }
 
 .input::placeholder {
@@ -80,28 +78,28 @@
 }
 
 .page-module___8aEwW__input:focus-visible {
-    border: none !important;
+  border: none !important;
 }
 
 .input:focus {
   border: 1px solid black;
-  box-shadow: 4px 4px 0 rgba(0,0,0,.9);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.9);
 }
 
 .button_primary {
   background-color: var(--button-primary);
   color: var(--button-text);
-  padding: .8rem 2.2rem;
+  padding: 0.8rem 2.2rem;
   border-radius: 0.75rem;
   cursor: pointer;
-  font-family: 'Pixelify Sans Variable', system-ui;
+  font-family: "Pixelify Sans Variable", system-ui;
   font-size: 1rem;
-  transition: all ease-in-out .3s;
+  transition: all ease-in-out 0.3s;
 }
 
 .button_primary:focus {
   border: 1px solid black;
-  box-shadow: 4px 4px 0 rgba(0,0,0,.9);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.9);
 }
 
 .button_primary:focus-visible {
@@ -109,12 +107,12 @@
 }
 
 .button_primary:hover {
-  box-shadow: 4px 4px 0 rgba(0,0,0,.9);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.9);
 }
 
 .text_error {
-    color: var(--button-primary);
-    margin-top: 2rem;
+  color: var(--button-primary);
+  margin-top: 2rem;
 }
 
 .result_card_container {
@@ -157,18 +155,21 @@
   flex-direction: column;
   width: 50%;
   height: 60ch;
-  background: linear-gradient(180deg, var(--button-primary) 75.47%, var(--text-color-primary) 75.48%);
+  background: linear-gradient(
+    180deg,
+    var(--button-primary) 75.47%,
+    var(--text-color-primary) 75.48%
+  );
   background-size: contain;
   padding: 1rem;
   border-radius: 0.75rem;
-  justify-self:baseline;
-  vertical-align:bottom;
+  justify-self: baseline;
+  vertical-align: bottom;
 }
 
 .pokemon_image {
   margin: auto;
   vertical-align: bottom;
-
 }
 
 @media (prefers-color-scheme: dark) {
@@ -213,5 +214,4 @@
   .main ol {
     text-align: center;
   }
-
 }
