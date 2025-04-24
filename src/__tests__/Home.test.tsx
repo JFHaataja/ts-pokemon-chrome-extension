@@ -12,7 +12,7 @@ describe('Home', () => {
         expect(searchBtn).toBeInTheDocument() // ASSERT
     })
 
-    it('should have an h1 heading"', () => {
+    it('should have an h1 heading', () => {
         render(<App/>)
     
         const h1 = screen.getByRole('heading', {
