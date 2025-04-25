@@ -1,68 +1,217 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+.page {
+  --button-primary: #e50012;
+  --button-text: #fff;
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+  --text-color-primary: #282828;
+  --text-input-color: #555;
+  --bg-primary: #ffe100;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  min-height: 100svh;
+  font-family: "Pixelify Sans Variable", system-ui;
+  border: 2px solid var(--text-color-primary);
+  margin: 0.6em;
+  border-radius: 0.75rem;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.hero_bg {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  align-items: center;
+  justify-items: center;
+  background-color: var(--bg-primary);
+  border-bottom: 2px solid var(--text-color-primary);
+  border-radius: 0.75rem;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.h1 {
+  text-transform: uppercase;
+  color: var(--text-color-primary);
+  text-align: center;
+  font-size: 2.9rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 0.5em;
+}
+
+.input_label {
+  color: var(--text-color-primary);
+  text-align: center;
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 1em;
+  justify-content: center;
+  display: flex;
+}
+
+.input_group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.input {
+  border-radius: 0.75rem;
+  border: 2px solid var(--text-color-primary);
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  padding-left: 1.3em;
+  padding-right: 1em;
+  margin-right: 1em;
+  font-family: "Pixelify Sans Variable", system-ui;
+  font-size: 1rem;
+  color: var(--text-color-primary);
+  transition: all ease-in-out 0.3s;
+}
+
+.input::placeholder {
+  color: var(--text-input-color);
+}
+
+.input:focus-visible {
+  border: none;
+  outline: none;
+}
+
+.page-module___8aEwW__input:focus-visible {
+  border: none !important;
+}
+
+.input:focus {
+  border: 1px solid black;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.9);
+}
+
+.button_primary {
+  background-color: var(--button-primary);
+  color: var(--button-text);
+  padding: 0.8rem 2.2rem;
+  border-radius: 0.75rem;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  font-family: "Pixelify Sans Variable", system-ui;
+  font-size: 1rem;
+  transition: all ease-in-out 0.3s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.button_primary:focus {
+  border: 1px solid black;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.9);
+}
+
+.button_primary:focus-visible {
+  outline: none;
+}
+
+.button_primary:hover {
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.9);
+}
+
+.text_error {
+  color: var(--button-primary);
+  margin-top: 2rem;
+}
+
+.result_card_container {
+  display: flex;
+  margin-top: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 2em;
+  align-items: start;
+  justify-items: start;
+  border: 2px solid var(--text-color-primary);
+  border-radius: 0.75rem;
+}
+
+.card_weakness {
+  width: 50%;
+  padding-top: 2rem;
+  padding-left: 2rem;
+}
+
+.ul {
+  list-style: none;
+}
+
+.li {
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  text-transform: capitalize;
+  padding-bottom: 1.5rem;
+}
+
+.h2 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.card_pokemon_image {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 60ch;
+  background: linear-gradient(
+    180deg,
+    var(--button-primary) 75.47%,
+    var(--text-color-primary) 75.48%
+  );
+  background-size: contain;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  justify-self: baseline;
+  vertical-align: bottom;
+}
+
+.pokemon_image {
+  margin: auto;
+  vertical-align: bottom;
+}
+
+@media (prefers-color-scheme: dark) {
+  .page {
+    --gray-rgb: 255, 255, 255;
+    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
+    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+
+    --button-primary-hover: #ccc;
+    --button-secondary-hover: #1a1a1a;
   }
-  a:hover {
-    color: #747bff;
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  a.primary:hover {
+    background: var(--button-primary-hover);
+    border-color: transparent;
   }
-  button {
-    background-color: #f9f9f9;
+
+  a.secondary:hover {
+    background: var(--button-secondary-hover);
+    border-color: transparent;
+  }
+
+  .footer a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 32px;
+    padding-bottom: 80px;
+  }
+
+  .main {
+    align-items: center;
+  }
+
+  .main ol {
+    text-align: center;
   }
 }
