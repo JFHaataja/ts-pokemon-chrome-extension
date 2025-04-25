@@ -19,7 +19,6 @@ function App() {
       setError("");
       const data = await fetchPokemonData(name);
       setCardName(name);
-      console.log(name);
       const types = data.types.map(
         (t: { type: { name: string } }) => t.type.name,
       );

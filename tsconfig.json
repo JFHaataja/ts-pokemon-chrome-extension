@@ -11,5 +11,5 @@
     },
     "types": ["vitest/globals"] // Add Jest types
   },
-  "include": ["__tests__/*.test.tsx","__tests__/*.test.ts"]
+  "include": ["__tests__/*.test.tsx", "__tests__/*.test.ts"]
 }

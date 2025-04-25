@@ -4,7 +4,7 @@ import { TypeData } from "./types";
 
 export async function fetchPokemonData(name: string) {
   const response = await axiosInstance.get(
-    `https://pokeapi.co/api/v2/pokemon/${name.toLowerCase().trim()}`
+    `https://pokeapi.co/api/v2/pokemon/${name.toLowerCase().trim()}`,
   );
   return response.data;
 }
