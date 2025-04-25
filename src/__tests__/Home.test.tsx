@@ -3,6 +3,7 @@ import App from "../App";
 import { vi } from "vitest";
 import * as api from "../lib/api";
 import * as logic from "../lib/logic";
+import "@testing-library/jest-dom";
 
 vi.mock("../lib/api");
 vi.mock("../lib/logic");
@@ -23,8 +24,8 @@ describe("App", () => {
       id: 25,
       types: [{ type: { name: "electric" } }],
     };
-    (api.fetchPokemonData as vi.Mock).mockResolvedValue(mockData);
-    (logic.getPokemonWeaknesses as vi.Mock).mockResolvedValue(["ground"]);
+    vi.mocked(api.fetchPokemonData).mockResolvedValue(mockData);
+    vi.mocked(logic.getPokemonWeaknesses).mockResolvedValue(["ground"]);
 
     render(<App />);
 
@@ -42,7 +43,7 @@ describe("App", () => {
   });
 
   it("shows an error message if the Pokémon is not found", async () => {
-    (api.fetchPokemonData as vi.Mock).mockRejectedValue(new Error("Not found"));
+    vi.mocked(api.fetchPokemonData).mockRejectedValue(new Error("Not found"));
 
     render(<App />);
 
