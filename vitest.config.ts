@@ -5,7 +5,14 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
     css: true,
-    setupFiles: "./vite.setup.ts, ./src/setupTests.ts",
+    test: {
+      globals: true,
+      environment: "jsdom",
+      setupFiles: [
+        "./vite.setup.ts",
+        "./src/setupTests.ts"
+      ],
+    },
     exclude: [...configDefaults.exclude, "**/e2e/**"], // Example: Exclude e2e tests
     coverage: {
       provider: "v8", // Use Vite's default coverage provider
