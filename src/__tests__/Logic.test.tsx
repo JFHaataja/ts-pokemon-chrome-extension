@@ -1,40 +1,55 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { getPokemonWeaknesses } from '../lib/logic';
 import * as api from '../lib/api';
 
+vi.mock('../lib/api', () => ({
+  fetchTypeData: vi.fn(),
+}));
+
+const mockFetchTypeData = api.fetchTypeData as unknown as jest.Mock;
+
 describe('getPokemonWeaknesses', () => {
-  it('returns correct weaknesses for single type', async () => {
-    vi.spyOn(api, 'fetchTypeData').mockResolvedValue({
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it('returns weaknesses for a single type', async () => {
+    mockFetchTypeData.mockResolvedValueOnce({
       damage_relations: {
-        double_damage_from: [{ name: 'water' }, { name: 'electric' }],
+        double_damage_from: [{ name: 'ground' }, { name: 'rock' }],
       },
     });
 
-    const result = await getPokemonWeaknesses(['flying']);
-    expect(result).toEqual(expect.arrayContaining(['water', 'electric']));
+    const result = await getPokemonWeaknesses(['electric']);
+    expect(result).toEqual(expect.arrayContaining(['ground', 'rock']));
   });
 
-  it('returns unique weaknesses when types overlap', async () => {
-    vi.spyOn(api, 'fetchTypeData')
+  it('merges weaknesses for multiple types without duplicates', async () => {
+    mockFetchTypeData
       .mockResolvedValueOnce({
         damage_relations: {
-          double_damage_from: [{ name: 'ice' }, { name: 'rock' }],
+          double_damage_from: [{ name: 'ground' }, { name: 'rock' }],
         },
       })
       .mockResolvedValueOnce({
         damage_relations: {
-          double_damage_from: [{ name: 'rock' }, { name: 'fire' }],
+          double_damage_from: [{ name: 'fire' }, { name: 'rock' }],
         },
       });
 
-    const result = await getPokemonWeaknesses(['flying', 'grass']);
-    expect(result).toEqual(expect.arrayContaining(['ice', 'rock', 'fire']));
-    expect(result.length).toBe(3); // rock does not duplicate
+    const result = await getPokemonWeaknesses(['electric', 'bug']);
+    expect(result).toEqual(expect.arrayContaining(['ground', 'rock', 'fire']));
+    expect(result.filter((v) => v === 'rock')).toHaveLength(1); // Ei duplikaattia
   });
 
-  it('throws or handles error if fetch fails', async () => {
-    vi.spyOn(api, 'fetchTypeData').mockRejectedValue(new Error('API failure'));
+  it('returns empty array if no types provided', async () => {
+    const result = await getPokemonWeaknesses([]);
+    expect(result).toEqual([]);
+  });
 
-    await expect(getPokemonWeaknesses(['ghost'])).rejects.toThrow('API failure');
+  it('throws error if fetchTypeData fails', async () => {
+    mockFetchTypeData.mockRejectedValueOnce(new Error('API fail'));
+
+    await expect(getPokemonWeaknesses(['electric'])).rejects.toThrow('API fail');
   });
 });
