@@ -17,5 +17,9 @@
     },
     "types": ["vitest/globals"] // Add Jest types
   },
-  "include": ["src, __tests__/*.test.tsx", "__tests__/*.test.ts", "node_modules/@fontsource-variable"]
+  "include": [
+    "src, __tests__/*.test.tsx",
+    "__tests__/*.test.ts",
+    "node_modules/@fontsource-variable"
+  ]
 }
