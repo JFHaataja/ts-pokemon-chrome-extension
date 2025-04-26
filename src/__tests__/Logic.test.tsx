@@ -17,11 +17,14 @@ describe("getPokemonWeaknesses", () => {
     mockFetchTypeData.mockResolvedValueOnce({
       damage_relations: {
         double_damage_from: [{ name: "ground" }, { name: "rock" }],
+        half_damage_from: [],
+        no_damage_from: [],
       },
     });
 
     const result = await getPokemonWeaknesses(["electric"]);
-    expect(result).toEqual(expect.arrayContaining(["ground", "rock"]));
+    expect(result.doubleWeaknesses).toEqual(expect.arrayContaining(["ground", "rock"]));
+    expect(result.quadrupleWeaknesses).toEqual([]);
   });
 
   it("merges weaknesses for multiple types without duplicates", async () => {
@@ -29,29 +32,54 @@ describe("getPokemonWeaknesses", () => {
       .mockResolvedValueOnce({
         damage_relations: {
           double_damage_from: [{ name: "ground" }, { name: "rock" }],
+          half_damage_from: [],
+          no_damage_from: [],
         },
       })
       .mockResolvedValueOnce({
         damage_relations: {
           double_damage_from: [{ name: "fire" }, { name: "rock" }],
+          half_damage_from: [],
+          no_damage_from: [],
         },
       });
-
+  
     const result = await getPokemonWeaknesses(["electric", "bug"]);
-    expect(result).toEqual(expect.arrayContaining(["ground", "rock", "fire"]));
-    expect(result.filter((v) => v === "rock")).toHaveLength(1); // Ei duplikaattia
+    expect(result.doubleWeaknesses).toEqual(expect.arrayContaining(["ground", "fire"])); // "rock" pois täältä
+    expect(result.quadrupleWeaknesses).toEqual(expect.arrayContaining(["rock"])); // "rock" tänne
   });
+  
 
-  it("returns empty array if no types provided", async () => {
+  it("returns empty arrays if no types provided", async () => {
     const result = await getPokemonWeaknesses([]);
-    expect(result).toEqual([]);
+    expect(result).toEqual({ doubleWeaknesses: [], quadrupleWeaknesses: [] });
   });
 
   it("throws error if fetchTypeData fails", async () => {
     mockFetchTypeData.mockRejectedValueOnce(new Error("API fail"));
 
-    await expect(getPokemonWeaknesses(["electric"])).rejects.toThrow(
-      "API fail",
-    );
+    await expect(getPokemonWeaknesses(["electric"])).rejects.toThrow("API fail");
+  });
+
+  it("identifies quadruple weaknesses correctly", async () => {
+    mockFetchTypeData
+      .mockResolvedValueOnce({
+        damage_relations: {
+          double_damage_from: [{ name: "electric" }],
+          half_damage_from: [],
+          no_damage_from: [],
+        },
+      })
+      .mockResolvedValueOnce({
+        damage_relations: {
+          double_damage_from: [{ name: "electric" }],
+          half_damage_from: [],
+          no_damage_from: [],
+        },
+      });
+  
+    const result = await getPokemonWeaknesses(["water", "flying"]); // esim. Gyarados
+    expect(result.doubleWeaknesses).toEqual([]); // mitään ei jää 2x listalle
+    expect(result.quadrupleWeaknesses).toEqual(expect.arrayContaining(["electric"]));
   });
 });

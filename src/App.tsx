@@ -9,7 +9,8 @@ import "./index.css";
 function App() {
   const [name, setName] = useState("");
   const [cardName, setCardName] = useState("");
-  const [weaknesses, setWeaknesses] = useState<string[]>([]);
+  const [doubleWeaknesses, setDoubleWeaknesses] = useState<string[]>([]);
+  const [quadrupleWeaknesses, setQuadrupleWeaknesses] = useState<string[]>([]);
   const [error, setError] = useState("");
   const [pokemonId, setPokemonId] = useState<number | null>(null);
 
@@ -19,11 +20,10 @@ function App() {
       setError("");
       const data = await fetchPokemonData(name);
       setCardName(name);
-      const types = data.types.map(
-        (t: { type: { name: string } }) => t.type.name,
-      );
-      const weaknesses = await getPokemonWeaknesses(types);
-      setWeaknesses(weaknesses);
+      const types = data.types.map((t: { type: { name: string } }) => t.type.name);
+      const { doubleWeaknesses, quadrupleWeaknesses } = await getPokemonWeaknesses(types);
+      setDoubleWeaknesses(doubleWeaknesses);
+      setQuadrupleWeaknesses(quadrupleWeaknesses);
       setPokemonId(data.id);
     } catch (e) {
       setError("Pokémon not found!");
@@ -61,7 +61,7 @@ function App() {
         </div>
       </div>
 
-      {weaknesses.length > 0 && (
+      {pokemonId && (
         <div className={"result_card_container"}>
           <div className={"card_weakness"}>
             <h2 className={"h2"}>Id:</h2>
@@ -73,16 +73,35 @@ function App() {
             <ul className={"ul"}>
               <li className={"li"}>{cardName}</li>
             </ul>
-            <h2 className={"h2"}>Weakness:</h2>
-            <ul className={"ul"}>
-              {weaknesses.map((weakness) => (
-                <li key={weakness} className={"li"}>
-                  {weakness}
-                </li>
-              ))}
-            </ul>
+
+            {quadrupleWeaknesses.length > 0 && (
+              <>
+                <h2 className={"h2"}>4x Weaknesses:</h2>
+                <ul className={"ul"}>
+                  {quadrupleWeaknesses.map((weakness) => (
+                    <li key={weakness} className={"li"}>
+                      {weakness}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            {doubleWeaknesses.length > 0 && (
+              <>
+                <h2 className={"h2"}>2x Weaknesses:</h2>
+                <ul className={"ul"}>
+                  {doubleWeaknesses.map((weakness) => (
+                    <li key={weakness} className={"li"}>
+                      {weakness}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </div>
 
+          {/* Pokemonin kuva */}
           <div className={"card_pokemon_image"}>
             {pokemonId && (
               <img
@@ -99,6 +118,7 @@ function App() {
           </div>
         </div>
       )}
+
     </div>
   );
 }
