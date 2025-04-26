@@ -1,5 +1,4 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import axios from "axios";
 import { fetchPokemonData, fetchTypeData } from "../lib/api";
 
 vi.mock("../lib/http", () => ({
@@ -7,8 +6,6 @@ vi.mock("../lib/http", () => ({
     get: vi.fn(),
   },
 }));
-
-vi.mock("axios");
 
 describe("fetchPokemonData", () => {
   beforeEach(() => {
@@ -28,10 +25,17 @@ describe("fetchPokemonData", () => {
 
 describe("fetchTypeData", () => {
   it("should fetch type data", async () => {
-    vi.mocked(axios.get).mockResolvedValueOnce({
+    const mockedGet = vi.mocked((await import("../lib/http")).default.get);
+    mockedGet.mockResolvedValueOnce({
       data: {
+        name: "electric",
         damage_relations: {
           double_damage_from: [{ name: "ground", url: "url" }],
+          double_damage_to: [],
+          half_damage_from: [],
+          half_damage_to: [],
+          no_damage_from: [],
+          no_damage_to: [],
         },
       },
     });
