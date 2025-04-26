@@ -25,7 +25,10 @@ describe("App", () => {
       types: [{ type: { name: "electric" } }],
     };
     vi.mocked(api.fetchPokemonData).mockResolvedValue(mockData);
-    vi.mocked(logic.getPokemonWeaknesses).mockResolvedValue(["ground"]);
+    vi.mocked(logic.getPokemonWeaknesses).mockResolvedValue({
+      doubleWeaknesses: ["ground"],
+      quadrupleWeaknesses: [],
+    });
 
     render(<App />);
 

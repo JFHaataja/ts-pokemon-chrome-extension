@@ -20,6 +20,7 @@
     "@vitejs/plugin-react": "^4.4.1",
     "axios": "^1.8.4",
     "axios-cache-interceptor": "^1.7.0",
+    "chrome-types": "^0.1.348",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -29,6 +30,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@types/chrome": "^0.0.317",
     "@types/jest": "^29.5.14",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
