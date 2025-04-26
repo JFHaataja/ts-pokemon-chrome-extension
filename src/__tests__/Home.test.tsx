@@ -29,22 +29,21 @@ describe("App", () => {
       doubleWeaknesses: ["ground"],
       quadrupleWeaknesses: [],
     });
-  
+
     render(<App />);
-  
+
     const input = screen.getByPlaceholderText(/enter pokémon name/i);
     const button = screen.getByRole("button", { name: /search/i });
-  
+
     fireEvent.change(input, { target: { value: "pikachu" } });
     fireEvent.click(button);
-  
+
     await waitFor(() => {
       expect(screen.getByText("#25")).toBeInTheDocument();
       expect(screen.getByText("pikachu")).toBeInTheDocument();
       expect(screen.getByText("ground")).toBeInTheDocument();
     });
   });
-  
 
   it("shows an error message if the Pokémon is not found", async () => {
     vi.mocked(api.fetchPokemonData).mockRejectedValue(new Error("Not found"));

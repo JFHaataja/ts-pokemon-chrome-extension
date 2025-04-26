@@ -7,7 +7,9 @@ export async function fetchPokemonData(name: string) {
   const cached = await getCachedData(cacheKey);
   if (cached) return cached;
 
-  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`.toLowerCase().trim());
+  const response = await axios.get(
+    `https://pokeapi.co/api/v2/pokemon/${name}`.toLowerCase().trim(),
+  );
   await setCachedData(cacheKey, response.data);
   return response.data;
 }

@@ -23,7 +23,9 @@ describe("getPokemonWeaknesses", () => {
     });
 
     const result = await getPokemonWeaknesses(["electric"]);
-    expect(result.doubleWeaknesses).toEqual(expect.arrayContaining(["ground", "rock"]));
+    expect(result.doubleWeaknesses).toEqual(
+      expect.arrayContaining(["ground", "rock"]),
+    );
     expect(result.quadrupleWeaknesses).toEqual([]);
   });
 
@@ -43,12 +45,15 @@ describe("getPokemonWeaknesses", () => {
           no_damage_from: [],
         },
       });
-  
+
     const result = await getPokemonWeaknesses(["electric", "bug"]);
-    expect(result.doubleWeaknesses).toEqual(expect.arrayContaining(["ground", "fire"])); // "rock" pois täältä
-    expect(result.quadrupleWeaknesses).toEqual(expect.arrayContaining(["rock"])); // "rock" tänne
+    expect(result.doubleWeaknesses).toEqual(
+      expect.arrayContaining(["ground", "fire"]),
+    ); // "rock" pois täältä
+    expect(result.quadrupleWeaknesses).toEqual(
+      expect.arrayContaining(["rock"]),
+    ); // "rock" tänne
   });
-  
 
   it("returns empty arrays if no types provided", async () => {
     const result = await getPokemonWeaknesses([]);
@@ -58,7 +63,9 @@ describe("getPokemonWeaknesses", () => {
   it("throws error if fetchTypeData fails", async () => {
     mockFetchTypeData.mockRejectedValueOnce(new Error("API fail"));
 
-    await expect(getPokemonWeaknesses(["electric"])).rejects.toThrow("API fail");
+    await expect(getPokemonWeaknesses(["electric"])).rejects.toThrow(
+      "API fail",
+    );
   });
 
   it("identifies quadruple weaknesses correctly", async () => {
@@ -77,9 +84,11 @@ describe("getPokemonWeaknesses", () => {
           no_damage_from: [],
         },
       });
-  
+
     const result = await getPokemonWeaknesses(["water", "flying"]); // esim. Gyarados
     expect(result.doubleWeaknesses).toEqual([]); // mitään ei jää 2x listalle
-    expect(result.quadrupleWeaknesses).toEqual(expect.arrayContaining(["electric"]));
+    expect(result.quadrupleWeaknesses).toEqual(
+      expect.arrayContaining(["electric"]),
+    );
   });
 });

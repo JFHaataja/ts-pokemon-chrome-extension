@@ -20,8 +20,11 @@ function App() {
       setError("");
       const data = await fetchPokemonData(name);
       setCardName(name);
-      const types = data.types.map((t: { type: { name: string } }) => t.type.name);
-      const { doubleWeaknesses, quadrupleWeaknesses } = await getPokemonWeaknesses(types);
+      const types = data.types.map(
+        (t: { type: { name: string } }) => t.type.name,
+      );
+      const { doubleWeaknesses, quadrupleWeaknesses } =
+        await getPokemonWeaknesses(types);
       setDoubleWeaknesses(doubleWeaknesses);
       setQuadrupleWeaknesses(quadrupleWeaknesses);
       setPokemonId(data.id);
@@ -118,7 +121,6 @@ function App() {
           </div>
         </div>
       )}
-
     </div>
   );
 }
