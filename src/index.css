@@ -161,12 +161,11 @@
   display: flex;
   flex-direction: column;
   width: 50%;
-  height: 41ch;
+  height: 100vh;
   background: linear-gradient(180deg, #E50012 75.47%, #282828 75.48%);
-  background-size: contain;
+  background-size: cover;
   border-radius: 0.75em;
-  justify-self: baseline;
-  vertical-align: bottom;
+
   flex-grow: 1;
 }
 
