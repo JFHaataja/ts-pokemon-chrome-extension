@@ -15,7 +15,7 @@
       "*": ["node_modules/*"],
       "src/*": ["./src/*"]
     },
-    "types": ["vitest/globals"] // Add Jest types
+    "types": ["vitest/globals", "chrome-types", "chrome"] // Add Jest types
   },
   "include": [
     "src, __tests__/*.test.tsx",

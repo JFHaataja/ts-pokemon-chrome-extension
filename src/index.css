@@ -9,28 +9,30 @@
 
   display: flex;
   flex-direction: column;
-  min-height: 100svh;
+  min-width: 390px;
+  min-height: 500px;
   font-family: "Pixelify Sans Variable", system-ui;
   border: 2px solid var(--text-color-primary);
   margin: 0.6em;
-  border-radius: 0.75rem;
+  border-radius: 0.75em;
+  flex-grow: 1;
 }
 
 .hero_bg {
-  padding-top: 3rem;
-  padding-bottom: 2rem;
+  padding-top: 3em;
+  padding-bottom: 2em;
   align-items: center;
   justify-items: center;
   background-color: var(--bg-primary);
   border-bottom: 2px solid var(--text-color-primary);
-  border-radius: 0.75rem;
+  border-radius: 0.75em;
 }
 
 .h1 {
   text-transform: uppercase;
   color: var(--text-color-primary);
   text-align: center;
-  font-size: 2.9rem;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -40,7 +42,7 @@
 .input_label {
   color: var(--text-color-primary);
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   margin-top: 1em;
@@ -52,10 +54,11 @@
   display: flex;
   justify-content: space-between;
   margin-top: 1em;
+  flex-grow: 1;
 }
 
 .input {
-  border-radius: 0.75rem;
+  border-radius: 0.75em;
   border: 2px solid var(--text-color-primary);
   padding-top: 0.6em;
   padding-bottom: 0.6em;
@@ -63,7 +66,7 @@
   padding-right: 1em;
   margin-right: 1em;
   font-family: "Pixelify Sans Variable", system-ui;
-  font-size: 1rem;
+  font-size: .8rem;
   color: var(--text-color-primary);
   transition: all ease-in-out 0.3s;
 }
@@ -89,11 +92,11 @@
 .button_primary {
   background-color: var(--button-primary);
   color: var(--button-text);
-  padding: 0.8rem 2.2rem;
-  border-radius: 0.75rem;
+  padding: 0.8em 2.2em;
+  border-radius: 0.75em;
   cursor: pointer;
   font-family: "Pixelify Sans Variable", system-ui;
-  font-size: 1rem;
+  font-size: .9rem;
   transition: all ease-in-out 0.3s;
 }
 
@@ -112,7 +115,7 @@
 
 .text_error {
   color: var(--button-primary);
-  margin-top: 2rem;
+  margin-top: 2em;
 }
 
 .result_card_container {
@@ -124,13 +127,17 @@
   align-items: start;
   justify-items: start;
   border: 2px solid var(--text-color-primary);
-  border-radius: 0.75rem;
+  border-radius: 0.75em;
+  flex-grow: 1;
+  min-width: 350px;
+  min-height: 150px;
 }
 
 .card_weakness {
   width: 50%;
-  padding-top: 2rem;
-  padding-left: 2rem;
+  padding-top: 2em;
+  padding-left: 2em;
+  flex-grow: 1;
 }
 
 .ul {
@@ -140,9 +147,9 @@
 .li {
   display: flex;
   flex-direction: column;
-  font-size: 2rem;
+  font-size: 1.9rem;
   text-transform: capitalize;
-  padding-bottom: 1.5rem;
+  padding-bottom: .4em;
 }
 
 .h2 {
@@ -154,17 +161,13 @@
   display: flex;
   flex-direction: column;
   width: 50%;
-  height: 60ch;
-  background: linear-gradient(
-    180deg,
-    var(--button-primary) 75.47%,
-    var(--text-color-primary) 75.48%
-  );
+  height: 41ch;
+  background: linear-gradient(180deg, #E50012 75.47%, #282828 75.48%);
   background-size: contain;
-  padding: 1rem;
-  border-radius: 0.75rem;
+  border-radius: 0.75em;
   justify-self: baseline;
   vertical-align: bottom;
+  flex-grow: 1;
 }
 
 .pokemon_image {
@@ -201,17 +204,23 @@
   }
 }
 
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
+
+@media (max-width: 400px) {
+  body {
+    max-width: 400px;
   }
 
-  .main {
-    align-items: center;
+  .h1 {
+    font-size: 1.5rem;
   }
 
-  .main ol {
-    text-align: center;
+  .input_label {
+    font-size: 1rem;
+  }
+
+  .input {
+    font-size: .8rem;
   }
 }
+
+

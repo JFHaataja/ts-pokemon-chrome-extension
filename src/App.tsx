@@ -14,7 +14,7 @@ function App() {
   const [pokemonId, setPokemonId] = useState<number | null>(null);
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // Estetään lomakkeen oletustoiminto (reload)
+    e.preventDefault();
     try {
       setError("");
       const data = await fetchPokemonData(name);
@@ -36,7 +36,7 @@ function App() {
     <div className="page">
       <div className="hero_bg">
         <h1 className={"h1"}>Pokémon Weakness Finder</h1>
-        <img src={pokeball} height={60} alt="Pokeball" />
+        <img src={pokeball} height={40} alt="Pokeball" />
 
         <div role="search">
           <form onSubmit={handleSearch}>
@@ -88,8 +88,8 @@ function App() {
               <img
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonId}.svg`}
                 alt={`Pokemon ${pokemonId}`}
-                width={400}
-                height={400}
+                width={150}
+                height={150}
                 className={"pokemon_image"}
                 onError={(e) => {
                   e.currentTarget.src = "/placeholder.svg";
