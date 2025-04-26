@@ -1,54 +1,85 @@
-# React + TypeScript + Vite
+# Typescript Pokémon Chrome Extension
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and expandable Chrome extension that allows users to fetch Pokémon type data, calculate weaknesses, and cache information for faster performance. Built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+![image](https://github.com/user-attachments/assets/7e27a722-46ab-4596-bf91-49288224f662)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🔎 **Search Pokémon Types**: Fetch type data from [PokeAPI](https://pokeapi.co/).
+- 🛡️ **Weakness Calculation**: Display 2× and 4× weaknesses based on type interactions.
+- ⚡ **Caching with Chrome Storage**: Improve speed by storing fetched data locally.
+- 🚀 **Built with Vite + React**: Fast, lightweight, and easy to maintain.
+- 🧪 **Fully Tested**: Using [Vitest](https://vitest.dev/) for unit testing.
+- 📦 **Ready for Deployment**: Optimized for publishing as a Chrome extension.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+---
+
+## 🛠️ Installation
+
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/your-username/pokemon-chrome-extension.git
+cd pokemon-chrome-extension
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Install dependencies:**
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    "react-x": reactX,
-    "react-dom": reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs["recommended-typescript"].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
+```bash
+npm install
 ```
+
+2. **Run locally:**
+
+```bash
+npm run dev
+```
+
+---
+
+## 🛠️ Running Tests
+
+**Execute all unit tests:**
+
+```bash
+npm run test
+```
+
+---
+
+## 🛠️  Building the Chrome Extension
+
+**1. Build the production files:**
+
+```bash
+npm run build
+```
+
+**2. Load the extension into Chrome:**
+
+- Go to chrome://extensions/
+
+- Enable Developer Mode
+
+- Click Load Unpacked
+
+- Select the dist/ folder created after build
+
+---
+
+## 📜 Technologies Used
+
+- React (Vite + TypeScript)
+
+- Vitest (Testing)
+
+- Chrome Extension APIs (chrome.storage, manifest v3)
+
+- Axios (Fetching API data)
+
+---
+
+## 🎉 Gotta catch 'em all!
