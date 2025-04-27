@@ -1,0 +1,22 @@
+{
+    "name": "Pokemon Chrome Extension Dev Container",
+    "image": "node:23-bullseye",
+    "features": {
+      "ghcr.io/devcontainers/features/node:1": {
+        "version": "23"
+      }
+    },
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.defaultProfile.linux": "bash"
+        },
+        "extensions": [
+          "esbenp.prettier-vscode",
+          "dbaeumer.vscode-eslint"
+        ]
+      }
+    },
+    "postCreateCommand": "npm install"
+  }
+  
