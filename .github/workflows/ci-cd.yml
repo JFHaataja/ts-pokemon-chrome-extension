@@ -1,4 +1,4 @@
-name: Build and Publish Chrome Extension
+name: Bump Version, Build, and Publish Chrome Extension
 
 on:
   push:
@@ -6,34 +6,48 @@ on:
       - main
 
 jobs:
-  build-and-publish:
+  bump-build-publish:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Run build
-      run: npm run build
+      - name: Bump version in manifest.json
+        run: |
+          node .github/scripts/bump-version.js
 
-    # - name: Zip build folder
-    #   run: |
-    #     cd dist
-    #     zip -r ../extension.zip .
+      - name: Commit and push bumped version
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add manifest.json
+          git commit -m "chore: bump version for new release" || echo "No changes to commit"
+          git push
 
-    # - name: Publish to Chrome Web Store
-    #   uses: w9jds/publish-chrome-extension@v3
-    #   with:
-    #     extension_id: ${{ secrets.EXTENSION_ID }}
-    #     client_id: ${{ secrets.GOOGLE_CLIENT_ID }}
-    #     client_secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-    #     refresh_token: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
-    #     zip_file: ./extension.zip
+      - name: Run build
+        run: npm run build
+
+      - name: Zip build folder
+        run: |
+          cd dist
+          zip -r ../extension.zip .
+
+      - name: Publish to Chrome Web Store
+        uses: w9jds/publish-chrome-extension@v3
+        with:
+          extension_id: ${{ secrets.EXTENSION_ID }}
+          client_id: ${{ secrets.GOOGLE_CLIENT_ID }}
+          client_secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          refresh_token: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          zip_file: ./extension.zip
