@@ -11,7 +11,8 @@
     "prettier": "npx prettier . --write",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "test:coverage-ui": "vitest --ui --coverage.enabled=true"
+    "test:coverage-ui": "vitest --ui --coverage.enabled=true",
+    "dev:container": "docker-compose -f .devcontainer/docker-compose.yml up --build"
   },
   "dependencies": {
     "@fontsource-variable/pixelify-sans": "^5.2.5",

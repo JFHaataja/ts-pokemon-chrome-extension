@@ -4,10 +4,10 @@ WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-RUN npm ci
+RUN npm install
 
 COPY . .
 
 USER node
 
-CMD ["bash"]
+CMD ["npm", "run", "dev"]
