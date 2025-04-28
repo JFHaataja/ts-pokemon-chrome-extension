@@ -85,8 +85,8 @@ describe("getPokemonWeaknesses", () => {
         },
       });
 
-    const result = await getPokemonWeaknesses(["water", "flying"]); // esim. Gyarados
-    expect(result.doubleWeaknesses).toEqual([]); // mitään ei jää 2x listalle
+    const result = await getPokemonWeaknesses(["water", "flying"]);
+    expect(result.doubleWeaknesses).toEqual([]);
     expect(result.quadrupleWeaknesses).toEqual(
       expect.arrayContaining(["electric"]),
     );
