@@ -31,6 +31,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git remote set-url origin https://github-actions:${{ secrets.GH_TOKEN }}@github.com/JFHaataja/ts-pokemon-chrome-extension.git
           git add public/manifest.json
           git commit -m "chore: bump version for new release" || echo "No changes to commit"
           git push
