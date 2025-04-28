@@ -17,7 +17,6 @@ export async function getPokemonWeaknesses(types: string[]) {
     });
   }
 
-  // Erotellaan 2x ja 4x heikkoudet
   const doubleWeaknesses = Object.entries(multiplierMap)
     .filter(([_, multiplier]) => multiplier === 2)
     .map(([typeName]) => typeName);

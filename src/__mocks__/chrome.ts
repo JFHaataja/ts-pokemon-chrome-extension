@@ -7,7 +7,7 @@ export const chrome = {
         const keysArray = Array.isArray(keys) ? keys : [keys];
         const result: Record<string, unknown> = {};
         for (const key of keysArray) {
-          result[key] = null; // Voit lisätä testidataa tähän halutessasi
+          result[key] = null;
         }
         callback(result);
       },
