@@ -25,7 +25,7 @@ jobs:
 
       - name: Bump version in manifest.json
         run: |
-          node .github/scripts/bump-version.js
+          node .github/scripts/bump-version.cjs
 
       - name: Commit and push bumped version
         run: |
