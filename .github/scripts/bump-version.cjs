@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-// Finding manifest.json from the root
-const manifestPath = path.join(__dirname, '../../manifest.json');
+// Finding manifest.json from the public folder
+const manifestPath = join(process.cwd(), 'public', 'manifest.json');
 
 // Reading and updating the version number
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
