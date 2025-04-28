@@ -43,8 +43,8 @@ jobs:
           cd dist
           zip -r ../extension.zip .
 
-      - name: Publish to Chrome Web Store
-        uses: w9jds/publish-chrome-extension@v3
+      - name: Publish Chrome Extension
+        uses: wdzeng/chrome-extension@v1.3.0
         with:
           extension_id: ${{ secrets.EXTENSION_ID }}
           client_id: ${{ secrets.GOOGLE_CLIENT_ID }}
