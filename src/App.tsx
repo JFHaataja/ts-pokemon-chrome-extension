@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { fetchPokemonData } from "./lib/api";
 import { getPokemonWeaknesses } from "./lib/logic";

@@ -15,11 +15,14 @@
       "*": ["node_modules/*"],
       "src/*": ["./src/*"]
     },
-    "types": ["vitest/globals", "chrome-types", "chrome"] // Add Jest types
+    "types": ["vitest/globals", "chrome-types", "vitest", "chrome"] // Add Jest types
   },
-  "include": [
-    "src, __tests__/*.test.tsx",
-    "__tests__/*.test.ts",
-    "node_modules/@fontsource-variable"
-  ]
+"include": [
+  "src",
+  "__tests__",
+  "vite.config.ts",
+  "vite.setup.ts",
+  "vitest.config.ts",
+  "fontsource.d.ts"
+]
 }

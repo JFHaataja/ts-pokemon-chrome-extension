@@ -1,4 +1,4 @@
-import js from "@eslint/js";
+import js from "@eslint/js"; 
 import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
@@ -14,9 +14,9 @@ export default tseslint.config([
       ecmaVersion: 2024,
       globals: globals.browser,
       parser: tseslint.parser,
-    },
-    parserOptions: {
-      project: "./tsconfig.json",
+      parserOptions: {
+        project: "./tsconfig.eslint.json",
+      },
     },
     plugins: {
       "react-hooks": reactHooks,

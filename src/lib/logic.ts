@@ -18,11 +18,11 @@ export async function getPokemonWeaknesses(types: string[]) {
   }
 
   const doubleWeaknesses = Object.entries(multiplierMap)
-    .filter(([_, multiplier]) => multiplier === 2)
+    .filter(([, multiplier]) => multiplier === 2)
     .map(([typeName]) => typeName);
 
   const quadrupleWeaknesses = Object.entries(multiplierMap)
-    .filter(([_, multiplier]) => multiplier === 4)
+    .filter(([, multiplier]) => multiplier === 4)
     .map(([typeName]) => typeName);
 
   return {
