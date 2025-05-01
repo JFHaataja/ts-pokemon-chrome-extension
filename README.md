@@ -50,7 +50,7 @@ npm run test
 
 ---
 
-## 🛠️  Building the Chrome Extension
+## 🛠️ Building the Chrome Extension
 
 **1. Build the production files:**
 
