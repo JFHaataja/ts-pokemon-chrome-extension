@@ -37,7 +37,8 @@ jobs:
           tags: |
             jonfh/pokemon-weakness-finder:latest
             jonfh/pokemon-weakness-finder:${{ env.VERSION }}
-            cache-from: type=registry,ref=jonfh/pokemon-weakness-finder:latest
+          cache-from: type=registry,ref=jonfh/pokemon-weakness-finder:latest
+          cache-to: type=inline
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}
