@@ -1,9 +1,8 @@
 version: "3"
 services:
   dev:
-    build:
-      context: ..
-      dockerfile: ./.devcontainer/Dockerfile
+  ## Fetching the latest image from Docker hub
+    image: jonfh/pokemon-weakness-finder:latest
     volumes:
       - ..:/workspace:cached
       - /workspace/node_modules
