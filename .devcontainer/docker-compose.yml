@@ -3,7 +3,7 @@ services:
   dev:
     build:
       context: ..
-      dockerfile: .devcontainer/Dockerfile
+      dockerfile: ./.devcontainer/Dockerfile
     volumes:
       - ..:/workspace:cached
       - /workspace/node_modules
