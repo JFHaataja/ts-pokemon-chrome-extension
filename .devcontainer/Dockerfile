@@ -1,6 +1,6 @@
 FROM node:23-slim
 
-WORKDIR /app
+WORKDIR /workspace
 
 COPY package.json package-lock.json ./
 

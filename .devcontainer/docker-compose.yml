@@ -1,4 +1,3 @@
-version: "3"
 services:
   dev:
   ## Fetching the latest image from Docker hub
