@@ -17,12 +17,12 @@
     },
     "types": ["vitest/globals", "chrome-types", "vitest", "chrome"] // Add Jest types
   },
-"include": [
-  "src",
-  "__tests__",
-  "vite.config.ts",
-  "vite.setup.ts",
-  "vitest.config.ts",
-  "fontsource.d.ts"
-]
+  "include": [
+    "src",
+    "__tests__",
+    "vite.config.ts",
+    "vite.setup.ts",
+    "vitest.config.ts",
+    "fontsource.d.ts"
+  ]
 }
