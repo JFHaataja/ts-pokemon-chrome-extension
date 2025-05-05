@@ -151,10 +151,7 @@ function App() {
             <label className="input_label" htmlFor="inputSearch">
               Search for a Pokémon:
             </label>
-            <div
-              className="input_group"
-              ref={inputWrapperRef}
-            >
+            <div className="input_group" ref={inputWrapperRef}>
               <input
                 id="inputSearch"
                 className="input"

@@ -195,7 +195,7 @@
   border-radius: 0.75em;
   max-width: 60%;
   scrollbar-width: thin;
-  clip-path: inset(0 round 0 0.90em 0.90em 0);
+  clip-path: inset(0 round 0 0.9em 0.9em 0);
 }
 
 .suggestion-item {
