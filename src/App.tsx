@@ -146,14 +146,13 @@ function App() {
         <h1 className="h1">Pokémon Weakness Finder</h1>
         <img src={pokeball} height={40} alt="Pokeball" />
 
-        <div role="search">
+        <div role="search" className="search_container">
           <form onSubmit={handleSearch} autoComplete="off">
             <label className="input_label" htmlFor="inputSearch">
               Search for a Pokémon:
             </label>
             <div
               className="input_group"
-              style={{ position: "relative" }}
               ref={inputWrapperRef}
             >
               <input
