@@ -1,14 +1,13 @@
 {
-    "extends": "./tsconfig.app.json",
-    "compilerOptions": {
-      "noEmit": true
-    },
-    "include": [
-      "src",
-      "vite.config.ts",
-      "vitest.config.ts",
-      "vite.setup.ts",
-      "fontsource.d.ts"
-    ]
-  }
-  
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "src",
+    "vite.config.ts",
+    "vitest.config.ts",
+    "vite.setup.ts",
+    "fontsource.d.ts"
+  ]
+}
