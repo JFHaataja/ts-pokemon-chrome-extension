@@ -8,10 +8,15 @@
     "48": "icon-48x48.png",
     "128": "icon-128x128.png"
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "action": {
     "default_popup": "index.html"
   },
-  "permissions": ["storage", "unlimitedStorage"],
-  "host_permissions": ["https://pokeapi.co/*"]
+  "permissions": [
+    "storage",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "https://pokeapi.co/*"
+  ]
 }
