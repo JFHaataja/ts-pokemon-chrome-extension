@@ -1,6 +1,6 @@
 services:
   dev:
-  ## Fetching the latest image from Docker hub
+    ## Fetching the latest image from Docker hub
     image: jonfh/pokemon-weakness-finder:latest
     volumes:
       - ..:/workspace:cached

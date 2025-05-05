@@ -15,7 +15,8 @@ function App() {
   const [pokemonId, setPokemonId] = useState<number | null>(null);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [allPokemonNames, setAllPokemonNames] = useState<string[]>([]);
-  const [activeSuggestionIndex, setActiveSuggestionIndex] = useState<number>(-1);
+  const [activeSuggestionIndex, setActiveSuggestionIndex] =
+    useState<number>(-1);
   const activeSuggestionRef = useRef<HTMLLIElement | null>(null);
   const inputWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -27,20 +28,23 @@ function App() {
           setAllPokemonNames(cachedNames);
           return;
         }
-  
-        const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=10000");
+
+        const res = await fetch(
+          "https://pokeapi.co/api/v2/pokemon?limit=10000",
+        );
         const data = await res.json();
-        const names = data.results.map((pokemon: { name: string }) => pokemon.name);
+        const names = data.results.map(
+          (pokemon: { name: string }) => pokemon.name,
+        );
         setAllPokemonNames(names);
         await setCachedData("pokemonNames", names);
       } catch (error) {
         console.error("Failed to fetch or cache Pokémon names", error);
       }
     };
-  
+
     fetchAllPokemon();
   }, []);
-  
 
   useEffect(() => {
     if (activeSuggestionRef.current) {
@@ -74,8 +78,11 @@ function App() {
       setError("");
       const data = await fetchPokemonData(name);
       setCardName(name);
-      const types = data.types.map((t: { type: { name: string } }) => t.type.name);
-      const { doubleWeaknesses, quadrupleWeaknesses } = await getPokemonWeaknesses(types);
+      const types = data.types.map(
+        (t: { type: { name: string } }) => t.type.name,
+      );
+      const { doubleWeaknesses, quadrupleWeaknesses } =
+        await getPokemonWeaknesses(types);
       setDoubleWeaknesses(doubleWeaknesses);
       setQuadrupleWeaknesses(quadrupleWeaknesses);
       setPokemonId(data.id);
@@ -109,16 +116,19 @@ function App() {
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setActiveSuggestionIndex((prevIndex) =>
-        prevIndex === suggestions.length - 1 ? 0 : prevIndex + 1
+        prevIndex === suggestions.length - 1 ? 0 : prevIndex + 1,
       );
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       setActiveSuggestionIndex((prevIndex) =>
-        prevIndex <= 0 ? suggestions.length - 1 : prevIndex - 1
+        prevIndex <= 0 ? suggestions.length - 1 : prevIndex - 1,
       );
     } else if (e.key === "Enter") {
       e.preventDefault();
-      if (activeSuggestionIndex >= 0 && activeSuggestionIndex < suggestions.length) {
+      if (
+        activeSuggestionIndex >= 0 &&
+        activeSuggestionIndex < suggestions.length
+      ) {
         const selected = suggestions[activeSuggestionIndex];
         setName(selected);
         setSuggestions([]);
@@ -164,7 +174,11 @@ function App() {
                   {suggestions.map((suggestion, index) => (
                     <li
                       key={suggestion}
-                      ref={index === activeSuggestionIndex ? activeSuggestionRef : null}
+                      ref={
+                        index === activeSuggestionIndex
+                          ? activeSuggestionRef
+                          : null
+                      }
                       className={`suggestion-item ${
                         index === activeSuggestionIndex ? "active" : ""
                       }`}

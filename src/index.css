@@ -210,7 +210,6 @@
   background-color: var(--suggestion-grey);
 }
 
-
 @media (prefers-color-scheme: dark) {
   .page {
     --gray-rgb: 255, 255, 255;
