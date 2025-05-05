@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { fetchPokemonData } from "./lib/api";
 import { getPokemonWeaknesses } from "./lib/logic";
+import { getCachedData, setCachedData } from "./lib/cache";
 import pokeball from "./assets/pokeball.svg";
 import "./App.css";
 import "./index.css";
@@ -21,9 +22,9 @@ function App() {
   useEffect(() => {
     const fetchAllPokemon = async () => {
       try {
-        const stored = await chrome.storage.local.get("pokemonNames");
-        if (stored.pokemonNames && Array.isArray(stored.pokemonNames)) {
-          setAllPokemonNames(stored.pokemonNames);
+        const cachedNames = await getCachedData<string[]>("pokemonNames");
+        if (cachedNames && Array.isArray(cachedNames)) {
+          setAllPokemonNames(cachedNames);
           return;
         }
   
@@ -31,9 +32,9 @@ function App() {
         const data = await res.json();
         const names = data.results.map((pokemon: { name: string }) => pokemon.name);
         setAllPokemonNames(names);
-        chrome.storage.local.set({ pokemonNames: names });
+        await setCachedData("pokemonNames", names);
       } catch (error) {
-        console.error("Failed to fetch or store Pokémon names", error);
+        console.error("Failed to fetch or cache Pokémon names", error);
       }
     };
   
@@ -195,7 +196,7 @@ function App() {
 
             <h2 className="h2">Name:</h2>
             <ul className="ul">
-              <li className="li">{cardName}</li>
+              <li className="li li_name">{cardName}</li>
             </ul>
 
             {quadrupleWeaknesses.length > 0 && (

@@ -122,8 +122,8 @@
 .result_card_container {
   display: flex;
   margin-top: 2em;
-  margin-left: 2em;
-  margin-right: 2em;
+  margin-left: 1em;
+  margin-right: 1em;
   margin-bottom: 2em;
   align-items: start;
   justify-items: start;
@@ -137,7 +137,7 @@
 .card_weakness {
   width: 50%;
   padding-top: 2em;
-  padding-left: 2em;
+  padding-left: 1em;
   flex-grow: 1;
 }
 
@@ -153,6 +153,10 @@
   padding-bottom: 0.4em;
 }
 
+.li_name {
+  word-break: break-word;
+}
+
 .h2 {
   font-size: 1rem;
   font-weight: 400;
@@ -165,7 +169,7 @@
   height: 100vh;
   background: linear-gradient(180deg, #e50012 75.47%, #282828 75.48%);
   background-size: cover;
-  border-radius: 0.75em;
+  border-radius: 0 0.75em 0.75em 0;
   flex-grow: 1;
 }
 
