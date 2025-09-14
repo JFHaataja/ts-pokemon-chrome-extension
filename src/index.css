@@ -27,6 +27,7 @@
   background-color: var(--bg-primary);
   border-bottom: 2px solid var(--text-color-primary);
   border-radius: 0.75em;
+  text-align: center;
 }
 
 .h1 {
@@ -196,11 +197,13 @@
   max-width: 60%;
   scrollbar-width: thin;
   clip-path: inset(0 round 0 0.9em 0.9em 0);
+  text-align: left;
 }
 
 .suggestion-item {
   padding: 8px 12px;
   cursor: pointer;
+  text-transform: capitalize;
 }
 
 .suggestion-item.active {
