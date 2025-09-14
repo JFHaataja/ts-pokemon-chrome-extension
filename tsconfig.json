@@ -8,14 +8,13 @@
     "typeRoots": ["./node_modules/@types", "./src/types"],
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "composite": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
-      "*": ["node_modules/*"],
-      "src/*": ["./src/*"]
-    },
-    "types": ["vitest/globals", "chrome-types", "vitest", "chrome"] // Add Jest types
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "src",
